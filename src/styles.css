@@ -89,9 +89,6 @@ tr.mat-row:hover {
     background-color: #e5f7ea;
 }
 
-.cdk-overlay-container {
-    z-index: 1600 !important;
-}
 
 
 /***** --------------------------------- Global color codings start ---------------------------------  *****/
@@ -354,3 +351,4 @@ button:focus,
     height: 200vh;
     background-color: #000;
 }
+

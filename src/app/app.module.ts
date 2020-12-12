@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table';
 import { MatSelectModule } from '@angular/material/select';
 import { MatListModule } from '@angular/material/list';
+import { AmazingTimePickerModule } from 'amazing-time-picker';
 
 
 import {
@@ -33,6 +34,10 @@ import { ManageBookingComponent } from './manage-booking/manage-booking.componen
 import { LandingPageComponent } from './landing-page/landing-page.component';
 // Routes
 const routes: Routes = [
+  {
+    path : '',
+    component: LandingPageComponent
+  },
   {
     path : 'booking',
     component: ManageBookingComponent
@@ -69,6 +74,7 @@ const routes: Routes = [
     FlexLayoutModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    AmazingTimePickerModule,
     RouterModule.forRoot(routes, { useHash: true }),
 
 
