@@ -15,8 +15,10 @@ var scheduleSchema = new mongoose.Schema({
         type: Number,
         "default": 0
     },
-    timeslot_from: Date,
-    timeslot_to: Date,
+    timeslot_from: String,
+    timeslot_to: String,
+    dateTimeslot_from: Date,
+    dateTimeslot_to: Date,
     booked_date: Date,
     createdBy: {
         type: Number

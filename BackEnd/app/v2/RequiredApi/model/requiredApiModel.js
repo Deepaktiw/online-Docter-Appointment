@@ -16,7 +16,7 @@ function get_weeks_avialability(current_day, working_days ) {
      try {
           var working_hrs;
           var week_count = current_day.day();
-          working_hrs = working_days.working_days.filter((days) => days.day === week_count);
+          working_hrs = working_days.filter((days) => days.day === week_count);
           return working_hrs;
      } catch(err) {
           console.log(err);
@@ -56,14 +56,13 @@ Array.prototype.unique = function () {
 }
 
 //used to get list of available based on doctor availble hours.
- module.exports.get_all_slots = async (vendor, duration, working_hrs,date, startTimeString , endTimeString) => {
+ module.exports.get_all_slots = async (vendor, duration,date, startTimeString , endTimeString) => {
   return new Promise(async (resolve , reject)=>{
      try {  
           var available_slots = [];
           var client_date = new moment(new Date(date));
           var current_date = client_date;
-          var day_count = 0;
-          console.log("----70---", current_date)
+          var day_count = 0; 
           // Based on vendor(Doctor) detail fetching already booked slot
           let booked_slots =  await get_booked_slot(vendor);
                if (day_count > 0)
@@ -100,8 +99,8 @@ Array.prototype.unique = function () {
                                    //check if the slot is available
                                    already_booked_slots_day.forEach(element => {
                                         if (slot_valid) {
-                                             b_fro_time = new moment(element.timeslot_from).format();
-                                             b_to_time = new moment(element.timeslot_to).format();
+                                             b_fro_time = new moment(element.dateTimeslot_from).format();
+                                             b_to_time = new moment(element.dateTimeslot_to).format();
                                              //Removing already booked slot
                                              if (start_slot.format() >= b_fro_time && start_slot.format() < b_to_time) {
                                                  slot_valid = false;
@@ -138,14 +137,19 @@ Array.prototype.unique = function () {
  module.exports.saveSlot =  function(orderId , vendorId , userId , bookedDate , slotFrom,slotTo, status){
       return new Promise((resolve , reject)=>{
            try {
+               let booked_date =  moment(bookedDate).format("YYYY-MM-DD");
+               let from =  booked_date +" "+slotFrom;
+               let to =  booked_date +" "+slotTo;
                schedule.create(
                     {
                          'order_id':orderId ,
                          'vendor':vendorId,
                          'user':userId,
                          'booked_date':bookedDate,
-                         'timeslot_from': moment(slotFrom).format(),
-                         'timeslot_to': moment(slotTo).format(),
+                         'timeslot_from': slotFrom,
+                         'timeslot_to': slotTo,
+                         'dateTimeslot_from':new moment(from).format(),
+                         'dateTimeslot_to': new moment(to).format(),
                          'status':status,
                          'createdBy':userId
                     }, function(err, created) {
