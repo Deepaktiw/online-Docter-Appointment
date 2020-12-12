@@ -1,0 +1,72 @@
+
+<section>
+  <div class="row mt-5" fxLayout="row wrap">
+    <div fxFlex ="25%" class="col-lg-5" style="width: 80%;height: 80%;">
+      <mat-card class="mat-elevation-z4 my-2 mx-2 px-2"  style="border-left: 4px solid #822972 ;width: 80%;height: 80%;">
+        <mat-card-content>
+            <mat-calendar name="appointment_date" [selected]="selectedDate" (selectedChange)="onSelect($event)"></mat-calendar>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div class="col-lg-7">
+      <mat-card class="mat-elevation-z4 mt-2 ">
+        <button style="min-width:100px; float:right;" mat-stroked-button class="border-outline-primary slots rounded-0" (click)="selectSlot(pro._id, pro.name, pro.master_id, pro.test_id, slot, pro.price, pro.contact)">+Add Slots </button>
+          <mat-card-header>
+            <mat-card-title>
+              <div class ="row">
+                <!-- <div class ="col-lg-1 mt-3"><img mat-card-image src="src\assets\img\provider\icon-brand.png" style="width: 12px;height: 12px;"/></div> -->
+                <div class ="col-lg-12"><h6 style="font-size: medium;font-weight: bold;">Morning</h6><h6 style="font-size:10px;font-weight: lighter;color: darkkhaki;">9:00 AM to 12:00 AM</h6></div>
+              </div>
+              </mat-card-title>
+          </mat-card-header>
+        <mat-card-content class="mx-2 p-2">
+          <div class="row">
+              <div *ngIf="timings.morning.length > 0; else noSlots">
+                <span *ngFor="let slot of timings.morning">
+                  <button style="min-width:100px;" mat-stroked-button class="border-outline-primary slots rounded-0" (click)="selectSlot(pro._id, pro.name, pro.master_id, pro.test_id, slot, pro.price, pro.contact)">{{slot}} </button>
+                  <!-- <button style="min-width:100px;" mat-stroked-button class="border-outline-primary slots rounded-0" (click)="selectSlot(pro._id, pro.name, pro.master_id, pro.test_id, slot, pro.price, pro.contact)">{{slot | date: 'hh:mm a'}}</button> -->
+                </span>
+              </div>
+              <ng-template #noSlots>
+                <div class="p-1 text-center custom-gray">
+                  <i class="material-icons" style="font-size: 56px;">sentiment_very_dissatisfied</i>
+                  <p>All Slots Are Booked</p>
+                </div>
+              </ng-template>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class="mat-elevation-z4 ">
+        <button style="min-width:100px; float:right;" mat-stroked-button class="border-outline-primary slots rounded-0" (click)="selectSlot(pro._id, pro.name, pro.master_id, pro.test_id, slot, pro.price, pro.contact)">+Add Slots </button>
+        <mat-card-header>
+          <mat-card-title>
+            <div class ="row">
+              <!-- <div class ="col-lg-1 mt-3"><img mat-card-image src="src\assets\img\provider\icon-brand.png" style="width: 12px;height: 12px;"/></div> -->
+              <div class ="col-lg-12"><h6 style="font-size: medium;font-weight: bold;">Evening</h6><h6 style="font-size:10px;font-weight: lighter;color: darkkhaki;">5:00 PM to 12:00 PM</h6></div>
+            </div>
+           </mat-card-title>
+       </mat-card-header>
+        <mat-card-content class="mx-2 p-2">
+          <div class="row">
+            <div *ngIf="timings.evening.length > 0; else noSlots">
+              <span *ngFor="let slot of timings.evening">
+                <button style="min-width:100px;" mat-stroked-button class="border-outline-primary slots rounded-0" (click)="selectSlot(pro._id, pro.name, pro.master_id, pro.test_id, slot, pro.price, pro.contact)">{{slot}} </button>
+                <!-- <button style="min-width:100px;" mat-stroked-button class="border-outline-primary slots rounded-0" (click)="selectSlot(pro._id, pro.name, pro.master_id, pro.test_id, slot, pro.price, pro.contact)">{{slot | date: 'hh:mm a'}}</button> -->
+              </span>
+            </div>
+            <ng-template #noSlots>
+              <div class="p-1 text-center custom-gray">
+                <i class="material-icons" style="font-size: 56px;">sentiment_very_dissatisfied</i>
+                <p>All Slots Are Booked</p>
+              </div>
+            </ng-template>
+        </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</section>
+
+
+
