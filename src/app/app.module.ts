@@ -21,7 +21,8 @@ import {
   MatPaginator,
   MatPaginatorModule,
   MatDatepickerModule,
-  MatNativeDateModule
+  MatNativeDateModule,
+  MatTabsModule
 } from '@angular/material';
 
 
@@ -32,6 +33,7 @@ import { NotificationService } from './services/notification.service';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import { ManageBookingComponent } from './manage-booking/manage-booking.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
 // Routes
 const routes: Routes = [
   {
@@ -51,6 +53,7 @@ const routes: Routes = [
     AppComponent,
     ManageBookingComponent,
     LandingPageComponent,
+    NavBarComponent,
   ],
   imports: [
     BrowserModule,
@@ -75,6 +78,7 @@ const routes: Routes = [
     MatDatepickerModule,
     MatNativeDateModule,
     AmazingTimePickerModule,
+    MatTabsModule,
     RouterModule.forRoot(routes, { useHash: true }),
 
 

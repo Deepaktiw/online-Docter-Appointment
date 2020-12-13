@@ -1,5 +1,5 @@
 .Section {
-    background:lightblue;
+    background-color:whitesmoke;
     width: 100%;
     height: 100%;
 }
@@ -7,4 +7,8 @@
 
 .sample{
     z-index: 250 !important;
+}
+
+.body{
+    background-color:lightskyblue;
 }

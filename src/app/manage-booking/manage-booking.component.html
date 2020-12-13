@@ -1,12 +1,15 @@
 <div class="Section">
   <section>
-    <mat-card>
-      <mat-card-header>
-        <span class="mt-2"><h5> Appointment  |  Home >  Appointment</h5> </span>
-      </mat-card-header>
-    </mat-card>
+    <div class="row">
+      <div class=" col-md-2 col-lg-2 mt-4 ml-5">
+        <h4> Appointment   | </h4>
+      </div>
+      <div class="col-md-2 col-lg-2 mt-4" >
+        <h6 class="mr-4 mt-1" style="font-size: medium; font-weight: lighter; "> Home >  Appointment </h6>
+      </div>
+    </div>
     <div class="row mt-5" fxLayout="row wrap">
-      <div fxFlex ="25%" class="col-lg-5" style="width: 80%;height: 80%;">
+      <div fxFlex ="25%" class="col-lg-5 ml-5" style="width: 80%;height: 80%;">
         <mat-card class="mat-elevation-z4 my-2 mx-2 px-2"  style="border-left: 4px solid #822972 ;width: 80%;height: 80%;">
           <mat-card-content>
               <mat-calendar name="appointment_date" [selected]="selectedDate" [minDate]="startAt" (selectedChange)="onSelect($event)"></mat-calendar>

@@ -290,6 +290,7 @@ button.mat-stroked-button.border-outline-purple:enabled:hover {
   .customNavbar {
     background-color: transparent;
     transition: background-color 1s ease 0s;
+    border-top-left-radius: 10%;
   }
   .customNavbar.solid {
     background-color: #20b04b;
@@ -350,5 +351,71 @@ button:focus,
     width: 200vw;
     height: 200vh;
     background-color: #000;
+}
+
+.mat-tab-header {
+    background-color:transparent;
+}
+/* .mat-tab-group {
+    border-color: white;
+    border-width: 2px;
+    border-style: solid;
+} */
+
+.mat-tab-label {
+    border-color: white;
+    border-style: solid;
+    border-width: 3px;
+    /* border-radius: 10%; */
+    border-top-left-radius: 20%;
+    border-top-right-radius: 20%;
+    background-color:green;
+    color:white;
+    opacity: 5;  
+    padding: 30%;
+}
+
+/*#870841; <- Color vino */
+
+.mat-tab-label:hover {
+    background-color:lightgreen;
+    color: white;
+    /* padding: 30px; */
+
+}
+
+
+.mat-tab-label{
+    min-width: 120px !important;
+    min-height: 55px !important;
+    padding: 5px;
+    color:white;
+    font-weight: 700;
+    text-align: left;
+}
+
+
+
+.mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {
+    background-color:white;
+    border-color: white;
+    border-style: solid;
+    border-left-width: 0px;
+    border-right-width: 0px;
+    border-bottom-width: 0px;
+    border-top-width: 0px;
+}
+
+.mat-tab-label-active:not(.mat-tab-disabled), .mat-tab-label.mat-tab-label-active.cdk-keyboard-focused:not(.mat-tab-disabled){
+    border-left: 3px solid #20b04b;
+    background-color: #e9fbee !important;
+    color:green;
+    text-align: left;
+    opacity: 3;  
+    /* padding: 30px; */
+    border-top-left-radius: 20%;
+    border-top-right-radius: 20%;
+    border-bottom-right-radius: 5%;
+    font-weight: 700;
 }
 

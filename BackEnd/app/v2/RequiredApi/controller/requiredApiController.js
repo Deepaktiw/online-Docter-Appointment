@@ -69,7 +69,6 @@ module.exports.addSlot=  function(req , res){
           let data  = req.body
           if (typeof data != 'undefined') {
                /* joi (client side validation) */
-               console.log(req.body)
                     model.saveSlot( data.order_id , data.vendor_id , data.order_id,    data.selected_date,   data.slot_from, data.slot_to, data.status).then(slotted=>{
                          if( slotted != null ){
                               res.status(200).json({'status':'Success' ,'message':'Your appointment has successfully booked.!'})
