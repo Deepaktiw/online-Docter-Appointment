@@ -14,9 +14,9 @@
       </div>
     </div>
 
-    <!-- Slotting -->
+    <!-- Date Picker-->
     <div class="row mt-5" fxLayout="row wrap">
-      <!-- Morning Slot related code -->
+      
       <div fxFlex ="25%" class="col-lg-5 ml-5" style="width: 80%;height: 80%;">
         <mat-card class="mat-elevation-z4 my-2 mx-2 px-2"  style="border-left: 4px solid #822972 ;width: 80%;height: 80%;">
           <mat-card-content>
@@ -26,8 +26,8 @@
       </div>
       <!-- End -->
 
-      <!-- Evening slot related code -->
       <div class="col-lg-7">
+      <!-- Morning Slot related code -->
         <mat-card class="mat-elevation-z4 mt-2 ">
           <button style="min-width:100px; float:right;"  [disabled]="!AddButtonToggle"  mat-stroked-button class="border-outline-primary slots rounded-0" data-toggle="modal"
           data-target="#selectSlot"> +Add Slots </button>
@@ -43,7 +43,7 @@
             <div class="row">
                 <div *ngIf="AvailableSlot; else noSlots">
                   <span *ngFor="let slot of AvailableSlot.morningSlot">
-                    <button style="min-width:100px;" mat-stroked-button class="border-outline-primary slots rounded-0" [disabled]="!isValid" (click)="selectedSlot(slot ,0)">{{slot | date: 'hh:mm a'}} </button>
+                    <button style="min-width:100px;" mat-stroked-button class="border-outline-primary slots rounded-0 ml-2" [disabled]="!isValid" (click)="selectedSlot(slot ,0)">{{slot | date: 'hh:mm a'}} </button>
                   </span>
                 </div>
                 <ng-template #noSlots>
@@ -55,7 +55,8 @@
             </div>
           </mat-card-content>
         </mat-card>
-
+      <!-- End -->
+      <!-- Evening slot related code -->
         <mat-card class="mat-elevation-z4 ">
           <button style="min-width:100px; float:right;"  [disabled]="!AddButtonToggleEvening" mat-stroked-button class="border-outline-primary slots rounded-0"  data-toggle="modal"
           data-target="#selectSlot" >+Add Slots </button>
@@ -71,7 +72,7 @@
             <div class="row">
               <div *ngIf="AvailableSlot; else noSlots">
                 <span *ngFor="let slot of AvailableSlot.eveningSlot">
-                  <button style="min-width:100px;" mat-stroked-button class="border-outline-primary slots rounded-0" [disabled]="!isValidEvening" (click)="selectedSlotEvening(slot ,0)">{{slot | date: 'hh:mm a'}} </button>
+                  <button style="min-width:100px;" mat-stroked-button class="border-outline-primary slots rounded-3 ml-2" [disabled]="!isValidEvening" (click)="selectedSlotEvening(slot ,0)">{{slot | date: 'hh:mm a'}} </button>
                 </span>
               </div>
               <ng-template #noSlots>
@@ -83,8 +84,8 @@
           </div>
           </mat-card-content>
         </mat-card>
+        <!-- End -->
       </div>
-      <!-- End -->
     </div>
   </section>
 </div>
@@ -96,7 +97,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h4 class="modal-title" id="basicvalCode">Book Slot</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" (click)="selectedSlot(slot ,1)" >×</button>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" (click)="selectedSlot(slot ,2)" >×</button>
       </div>
       <div class="modal-body">
         <h5 style="color: lightgreen; text-align: center;" class="mb-4">PLease select time slot : {{ selectedFromButton}} -  {{selectedToButton}} </h5>

@@ -131,6 +131,13 @@ export class ManageBookingComponent implements OnInit {
           this.AddButtonToggle =1;
           this.selectedFromButton =  moment(momentDate).format('HH:mm') 
           this.selectedToButton =  moment(newDate).format('HH:mm');
+        } else if(flag == 2){
+          this.isValidEvening =1;
+          this.AddButtonToggleEvening =0;
+          this.isValid =1;
+          this.AddButtonToggle =0;
+          this.selectedFromButton =  moment(momentDate).format('HH:mm') 
+          this.selectedToButton =  moment(newDate).format('HH:mm');
         } else {
           this.isValid =1;
           this.AddButtonToggle =0;
@@ -200,6 +207,7 @@ export class ManageBookingComponent implements OnInit {
           this.selectedToButton =  moment(newDate).format('HH:mm');
         }
     }
+
 }
 
 
