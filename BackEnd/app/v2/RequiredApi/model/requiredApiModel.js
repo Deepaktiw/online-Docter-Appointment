@@ -4,6 +4,7 @@ const { reject } = require('core-js/fn/promise');
 const { resolve } = require('path');
 const schedule = mongoose.model('schedule');
 const list =  mongoose.model('appointment_list');
+var random_name = require('node-random-name');
 
 
 /**
@@ -138,6 +139,7 @@ Array.prototype.unique = function () {
       return new Promise((resolve , reject)=>{
            try {
                let booked_date =  moment(bookedDate).format("YYYY-MM-DD");
+               console.log()
                let from =  booked_date +" "+slotFrom;
                let to =  booked_date +" "+slotTo;
                schedule.create(
@@ -145,13 +147,16 @@ Array.prototype.unique = function () {
                          'order_id':orderId ,
                          'vendor':vendorId,
                          'user':userId,
-                         'booked_date':bookedDate,
+                         'booked_date': booked_date,
                          'timeslot_from': slotFrom,
                          'timeslot_to': slotTo,
                          'dateTimeslot_from':new moment(from).format(),
                          'dateTimeslot_to': new moment(to).format(),
                          'status':status,
-                         'createdBy':userId
+                         'createdBy':userId,
+                         'PatientName' :random_name(),
+                         'waitingTime':"Not Arrived",
+                         'contact':Math.floor(Math.random() * 1000000000)
                     }, function(err, created) {
                     if (err) {
                         reject(err);
@@ -174,6 +179,29 @@ Array.prototype.unique = function () {
           try {
               list.find(
                    {}, function(err, result) {
+                   if (err) {
+                       reject(err);
+                   } else if (result) {
+                       resolve(result);
+                   } else {
+                       reject(result);
+                   }
+               });
+          } catch(err){
+               console.log(err);
+               reject(err);
+          }
+     })
+}
+ 
+
+ //used to get list of appointment
+ module.exports.ScheduleList =  function(date){
+     return new Promise((resolve , reject)=>{
+          try {
+               let selectedDate =  new moment(date).format('YYYY-MM-DD');
+              schedule.find(
+                   {booked_date:selectedDate}, function(err, result) {
                    if (err) {
                        reject(err);
                    } else if (result) {

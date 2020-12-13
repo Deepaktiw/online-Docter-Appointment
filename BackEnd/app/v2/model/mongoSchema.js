@@ -6,6 +6,9 @@ const moment = require('moment');
 var scheduleSchema = new mongoose.Schema({
     ord_id: String,
     vendor: String,
+    PatientName :String,
+    waitingTime:String,
+    contact:Number,
     user: {
         type:Number
     },

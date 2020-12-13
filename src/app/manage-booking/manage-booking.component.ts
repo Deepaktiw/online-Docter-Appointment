@@ -55,12 +55,15 @@ export class ManageBookingComponent implements OnInit {
         this.spinner.show();
         this.httpCall.post(`${environment.consumerDomain}/getSlot`,data).subscribe(res => {
           if (res['status'] =='Success' ) {
+            this.spinner.hide();
             // this.notification.showNotification('success', res['message']);
             this.AvailableSlot=  res['data'];
           }else if(res['status'] ==  'Failed' ){
+            this.spinner.hide();
             this.AvailableSlot=[];
             this.notification.showNotification('success', res['message']);
           } else {
+            this.spinner.hide();
             this.AvailableSlot=[];
             this.notification.showNotification('success', res['message']);
           }
@@ -93,11 +96,14 @@ export class ManageBookingComponent implements OnInit {
         this.AddButtonToggle =0;
         this.httpCall.post(`${environment.consumerDomain}/addSlot`,data).subscribe(res => {
           if (res['status'] =='Success' ) {
+            this.spinner.hide();
             this.notification.showNotification('success', res['message']);
             location.reload();
           }else if(res['status'] ==  'Failed' ){
+            this.spinner.hide();
             this.notification.showNotification('success', res['message']);
           } else {
+            this.spinner.hide();
             this.notification.showNotification('success', res['message']);
           }
         }, err => {
@@ -152,11 +158,14 @@ export class ManageBookingComponent implements OnInit {
         this.AddButtonToggleEvening =0;
         this.httpCall.post(`${environment.consumerDomain}/addSlot`,data).subscribe(res => {
           if (res['status'] =='Success' ) {
+            this.spinner.hide();
             this.notification.showNotification('success', res['message']);
             location.reload();
           }else if(res['status'] ==  'Failed' ){
+            this.spinner.hide();
             this.notification.showNotification('success', res['message']);
           } else {
+            this.spinner.hide();
             this.notification.showNotification('success', res['message']);
           }
         }, err => {

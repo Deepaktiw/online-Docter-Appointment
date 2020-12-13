@@ -115,3 +115,38 @@ module.exports.getAppointmentList=  function(req , res){
 
      }
 }
+
+
+
+/**
+ * Purpose  : Used to get list of schedule.
+ * Required : Date
+ * Response : Return list of appointments
+ * Authore  : Deepak Tiwari
+ */
+module.exports.getScheduleList=  function(req , res){
+     try{
+     /* joi (client side validation) */
+          let data  = req.body
+          if (typeof data != 'undefined') {
+               /* joi (client side validation) */
+               model.ScheduleList(data.date).then(list=>{
+                    if(list.length > 0 ){
+                         res.status(200).json({'status':'Success' ,'message':'Available appointment list.' , 'data':list})
+                    } else {
+                         res.status(200).json({ "status": "Success", "message": "No appointments found", 'data':list });
+                    }                  
+               }).catch(err => {
+                    console.log(err);
+                    res.status(200).json({'status':'Failed' ,'message':'Unable to process your request try later!'})
+               })  
+          } else {
+               res.status(200).json({ 'status': 'Failed', 'message': "Something went wrong please try later!" });
+          }  
+     } catch(err){
+          console.log(err);
+          res.status(200).json({'status':'Failed' ,'message':'Internal Server Error'})
+
+     }
+}
+
